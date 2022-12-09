@@ -1,0 +1,6 @@
+export { routerLogin } from './login.route.js'
+export { routerLogout } from './logout.route.js'
+export { routerMessages } from './messages.route.js'
+export { routerProducts } from './products.route.js'
+export { routerRegister } from './register.route.js'
+export { routerSession } from './session.route.js'
