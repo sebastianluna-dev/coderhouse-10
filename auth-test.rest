@@ -1,0 +1,37 @@
+### register 
+POST http://localhost:8080/register
+content-type: application/json
+
+{
+    "username": "Sebastian Luna 2",
+    "password": "naitsabes123",
+    "email": "sebastian_luna1202@outlook.es",
+    "image": "http://www.image.com"   
+}
+
+### login
+POST http://localhost:8080/login
+content-type: application/json
+
+{
+    "username": "Sebastian Luna 2",
+    "password": "naitsabes123"
+}
+
+### refresh token 
+POST http://localhost:8080/refreshToken
+
+### logout
+POST http://localhost:8080/logout
+
+### route protected by auth
+GET http://localhost:8080/test/products 
+
+###
+POST http://localhost:8080/api/messages
+content-type: application/json
+authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNlYmFzdGlhbiBMdW5hIDIiLCJpYXQiOjE2NzExODM3MDAsImV4cCI6MTY3MTE4Mzc2MH0.yrhLhDT_4zWfREQ9Mz-kS_-yexpTgEFjReniUB4dS0g
+
+{
+    "message": "holaaaaaa"
+}

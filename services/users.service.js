@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { userSchema, userCollection } from '../models/User.js'
+import { hash } from 'bcrypt'
 
 class UserService {
   constructor (name, schema) {
@@ -7,7 +8,9 @@ class UserService {
   }
 
   async createUser (user) {
-    const response = await this.model.create(user)
+    const password = await hash(user.password, 10)
+    const userHashed = { ...user, password }
+    const response = await this.model.create(userHashed)
     return response
   }
 

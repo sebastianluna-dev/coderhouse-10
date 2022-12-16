@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
     !user.email ||
     !user.image
   ) {
-    res.send({
+    res.json({
       error: 'Send all the parameters to register an user'
     })
     return
@@ -21,15 +21,14 @@ router.post('/', async (req, res) => {
   const searchUserByName = await userDAO.getUserByName(user.username)
 
   if (searchUserByName) {
-    res.send({
-      error: 'You already have an user with that name'
+    res.json({
+      error: 'That username already exists'
     })
     return
   }
 
   const newUser = await userDAO.createUser(user)
-  req.session.userId = newUser._id.toString()
-  res.send(newUser)
+  res.json(newUser)
 })
 
 export { router as routerRegister }
