@@ -21,7 +21,7 @@ const app = express()
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors({ origin: '*' }))
+app.use(cors())
 
 app.use('/refreshToken', routerRefreshToken)
 app.use('/test/products', routerProducts)
