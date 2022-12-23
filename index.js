@@ -8,7 +8,8 @@ import {
   routerLogout,
   routerProducts,
   routerMessages,
-  routerRefreshToken
+  routerRefreshToken,
+  routerUser
 } from './routes/index.js'
 
 import { connectDB } from './database/db.js'
@@ -29,5 +30,6 @@ app.use('/api/messages', routerMessages)
 app.use('/login', routerLogin)
 app.use('/logout', routerLogout)
 app.use('/register', routerRegister)
+app.use('/api/user', routerUser)
 
 app.listen(PORT, () => console.log('SERVER RUNNING ON PORT ' + PORT))
