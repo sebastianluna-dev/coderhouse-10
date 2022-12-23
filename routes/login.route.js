@@ -2,7 +2,7 @@ import express from 'express'
 import { userDAO } from '../services/users.service.js'
 import jwt from 'jsonwebtoken'
 import { compare } from 'bcrypt'
-import { JWT_SECRET, JWT_REFRESH_SECRET } from '../config.js'
+import { JWT_SECRET } from '../config.js'
 
 const router = express.Router()
 const { sign } = jwt
@@ -22,21 +22,8 @@ router.post('/', async (req, res) => {
   if (isCorrectPasword) {
     const accessToken = sign({
       username: user.username
-    }, JWT_SECRET, {
-      expiresIn: '1m'
-    })
+    }, JWT_SECRET)
 
-    const refreshToken = sign({
-      username: user.username
-    }, JWT_REFRESH_SECRET, {
-      expiresIn: '1d'
-    })
-
-    res.cookie('jwt', refreshToken, {
-      httpOnly: true,
-      sameSite: 'none',
-      maxAge: 1000 * 60 * 60 * 24
-    })
     return res.json({
       authStatus: true,
       accessToken
